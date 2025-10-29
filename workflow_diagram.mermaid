@@ -1,0 +1,85 @@
+graph TB
+    A["👨‍💻 Developer<br/>Writes Code"] --> B["📤 Git Push<br/>to Repository"]
+    
+    B --> C{"CI Pipeline<br/>Triggered"}
+    
+    C --> D["🔍 SonarQube<br/>SAST Analysis<br/>Code Quality"]
+    C --> E["📦 OWASP<br/>Dependency Check<br/>Vulnerable Packages"]
+    
+    D --> F{"All Checks<br/>Pass?"}
+    E --> F
+    
+    F -->|No| G["🚫 BLOCK<br/>Alert Developer<br/>Fix Issues"]
+    G --> A
+    
+    F -->|Yes| H["🔨 Build<br/>Docker Image"]
+    
+    H --> I["🔐 Trivy Scan<br/>Container Vulnerabilities<br/>CVE Analysis"]
+    
+    I --> J{"Critical<br/>Issues?"}
+    
+    J -->|Yes| K["🚫 QUARANTINE<br/>Do Not Deploy"]
+    K --> A
+    
+    J -->|No| L["✅ Image Approved"]
+    
+    L --> M["🔑 Store Secrets<br/>in Vault<br/>Never in Images"]
+    
+    L --> N["📤 Push to Registry<br/>localhost:5001"]
+    
+    N --> O["🔍 Tag Image<br/>with Version<br/>Semantic Versioning"]
+    
+    O --> P["📝 Update Git<br/>Manifest<br/>New Image Tag"]
+    
+    P --> Q["👁️ ArgoCD<br/>Watches Repo"]
+    
+    Q --> R{"Manifest<br/>Changed?"}
+    
+    R -->|Yes| S["🚀 Auto Deploy<br/>to Kubernetes"]
+    
+    S --> T["📊 Kubernetes<br/>Rolling Update<br/>Health Checks"]
+    
+    T --> U{"Deployment<br/>Healthy?"}
+    
+    U -->|No| V["🔄 Rollback<br/>Previous Version"]
+    V --> W["🚨 Alert Team"]
+    
+    U -->|Yes| X["✅ Live in<br/>Production"]
+    
+    X --> Y["🛡️ Falco<br/>Runtime Security<br/>Anomaly Detection"]
+    
+    X --> Z["📈 Prometheus<br/>Metrics Collection"]
+    
+    Z --> AA["📊 Grafana<br/>Dashboards<br/>Visualization"]
+    
+    Y --> AB["🚨 Alert System<br/>Security Incidents"]
+    AA --> AC["📡 Alerting<br/>on Anomalies"]
+    
+    AB --> AD["👨‍🔧 Incident Response<br/>Team Notified"]
+    AC --> AD
+    
+    style A fill:#e1f5ff
+    style B fill:#e1f5ff
+    style D fill:#fff3e0
+    style E fill:#fff3e0
+    style G fill:#ffebee
+    style H fill:#f3e5f5
+    style I fill:#fff3e0
+    style K fill:#ffebee
+    style L fill:#c8e6c9
+    style M fill:#f3e5f5
+    style N fill:#f3e5f5
+    style O fill:#f3e5f5
+    style P fill:#e1f5ff
+    style Q fill:#c8e6c9
+    style S fill:#c8e6c9
+    style T fill:#c8e6c9
+    style V fill:#ffebee
+    style W fill:#ffebee
+    style X fill:#c8e6c9
+    style Y fill:#fff3e0
+    style Z fill:#fff3e0
+    style AA fill:#fff3e0
+    style AB fill:#ffebee
+    style AC fill:#ffebee
+    style AD fill:#ffebee
