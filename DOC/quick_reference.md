@@ -1,4 +1,4 @@
-# DevSecOps with Gitea & Nexus - Quick Reference
+# DevSecOps - Quick Reference
 
 ## 📋 Project Structure
 
