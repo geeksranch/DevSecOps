@@ -1,4 +1,4 @@
-# Complete Integration: Gitea + Nexus + DevSecOps Pipeline
+# Complete Integration: DevSecOps Pipeline
 
 ## Architecture Overview
 
